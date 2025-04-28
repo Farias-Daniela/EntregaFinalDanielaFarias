@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Playground{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">Acerca de mí</a>
+        <a href="{% url 'pages:pages_list' %}">Blog de Viajes</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:profile' %}">Perfil</a>
+            <a href="{% url 'messenger:inbox' %}">Mensajes</a>
+            <form action="{% url 'accounts:logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background:none; border:none; color:white; cursor:pointer; font-weight:bold;">
+                    Logout
+                </button>
+            </form>        {% else %}
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:signup' %}">Registrarse</a>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

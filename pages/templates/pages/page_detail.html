@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ page.title }}</h1>
+<h2>{{ page.subtitle }}</h2>
+
+{% for image in page.images.all %}
+    <img src="{{ page.image.url }}" alt="Imagen de {{ page.title }}" width="300">
+{% endfor %}
+
+<p>{{ page.content|safe }}</p>
+<p><small>Publicado en: {{ page.date|date:"d M Y H:i" }}</small></p>
+
+{% if user.is_authenticated %}
+    <p>
+        <a href="{% url 'pages:page_update' page.pk %}">✏️ Editar esta página</a> |
+        <a href="{% url 'pages:page_delete' page.pk %}">🗑️ Borrar esta página</a>
+    </p>
+{% endif %}
+
+<p><a href="{% url 'pages:pages_list' %}">← Volver al listado</a></p>
+{% endblock %}
+

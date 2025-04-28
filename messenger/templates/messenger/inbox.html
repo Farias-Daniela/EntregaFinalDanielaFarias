@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Bandeja de Entrada{% endblock %}
+
+{% block content %}
+<h1>Mensajes Recibidos</h1>
+
+{% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>
+            <strong>De:</strong> {{ message.sender.username }}<br>
+            <strong>Fecha:</strong> {{ message.created_at|date:"d/m/Y H:i" }}<br>
+            <strong>Mensaje:</strong> {{ message.content }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes mensajes.</p>
+{% endif %}
+
+<p><a href="{% url 'messenger:send_message' %}">➕ Enviar nuevo mensaje</a></p>
+
+<a href="{% url 'home' %}">← Volver al inicio</a>
+{% endblock %}

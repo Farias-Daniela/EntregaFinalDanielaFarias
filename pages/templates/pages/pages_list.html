@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Páginas{% endblock %}
+
+{% block content %}
+<h1 class="titulo-centrado">¡Bienvenido a mi Blog de Viajes</h1>
+
+{% if user.is_authenticated %}
+    <p><a href="{% url 'pages:page_create' %}">➕ Crear nueva página</a></p>
+{% endif %}
+<img src="{% static 'img/viajes.jpg' %}" alt="Daniela viajando por el mundo" style="width: 100%; height: auto; margin-top: 20px; border-radius: 10px;">
+{% if pages %}
+    <ul>
+    {% for page in pages %}
+        <li>
+            <h2>{{ page.title }}</h2>
+            <p>{{ page.subtitle }}</p>
+            <a href="{% url 'pages:page_detail' page.pk %}">Leer más</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay páginas aún.</p>
+{% endif %}
+
+{% endblock %}
+
