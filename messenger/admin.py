@@ -8,7 +8,7 @@ admin.site.register(Message)
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
-    extra = 1  # Número de formularios vacíos que se mostrarán por defecto
+    extra = 1  
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline]
