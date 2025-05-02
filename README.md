@@ -39,8 +39,8 @@ Todo el contenido dinámico requiere autenticación para poder modificarlo (crea
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repo.git
-   cd tu-repo
+   git clone https://github.com/Farias-Daniela/EntregaFinalDanielaFarias.git
+   cd EntregaFinalDanielaFarias
 
 ## Video
    https://drive.google.com/file/d/1iHR_QN-0kN5Hf_4VnILMCzKCAkkP1DSk/view?usp=sharing
